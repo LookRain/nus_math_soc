@@ -34,12 +34,12 @@
   
 
 	<div class="nav-right nav-menu" :class="{ 'is-active': toggleOn }">
-    <a class="nav-item is-tab">
+    <router-link  to="/" exact class="nav-item">
       Home
-    </a>
-    <a class="nav-item">
+    </router-link>
+    <router-link  to="/admin" exact class="nav-item">
       Events
-    </a>
+    </router-link>
 
     <a class="nav-item">
       PYP
@@ -86,6 +86,9 @@ export default {
 <style lang="css" scoped>
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
+}
+.nav-item img {
+    max-height: 2.55rem;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0
