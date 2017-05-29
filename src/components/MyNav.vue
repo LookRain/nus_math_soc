@@ -84,5 +84,7 @@
 </script>
 
 <style lang="css" scoped>
-
+.nav-item img {
+	max-height: 2.55rem;
+}
 </style>
