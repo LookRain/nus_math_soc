@@ -3,7 +3,7 @@
     <section class="hero is-primary is-bold">
       <div class="hero-body">
         <div class="container">
-          <div class="columns is-vcentered">
+          <div class="columns">
             <div class="column">
               <h1 class="title">NUS Mathematics Society
               </h1>
@@ -16,46 +16,50 @@
         </div>
       </div>
     </section>
-    <div class="container">
 
-      <div class="columns">
-        <div class="column is-8">
-          <div class="card">
-           
-            <div class="card-content" id="carousel">
-              <!-- swiper -->
-              <swiper :options="swiperOption">
-                <swiper-slide><b>test</b>Slide 1</swiper-slide>
-                <swiper-slide><img src="../assets/images/photos/AGM_2016.jpg" alt="Math Soc logo"></swiper-slide>
-                <swiper-slide>Slide 3</swiper-slide>
-                <div class="swiper-pagination" slot="pagination"></div>
-              </swiper>
+    <section class="section">
+      <div class="container">
+
+        <div class="columns">
+          <div class="column is-8">
+            <div class="card">
+             
+              <div class="card-content" id="carousel">
+                <!-- swiper -->
+                <swiper :options="swiperOption">
+                  <swiper-slide><b>test</b>Slide 1</swiper-slide>
+                  <swiper-slide><img src="../assets/images/photos/AGM_2016.jpg" alt="Math Soc logo"></swiper-slide>
+                  <swiper-slide>Slide 3</swiper-slide>
+                  <div class="swiper-pagination" slot="pagination"></div>
+                </swiper>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="column">
-          <div class="card">
-            <div class="card-content">
-              <p class="title">Who are we?</p>
-              <p class="subtitle" v-for="paragraph in description">{{ paragraph }}</p>
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content">
+                <p class="title">Who are we?</p>
+                <p class="subtitle" v-for="paragraph in description">{{ paragraph }}</p>
+              </div>
+              <footer class="card-footer">
+                <p class="card-footer-item">
+                  <span>
+                    View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+                  </span>
+                </p>
+                <p class="card-footer-item">
+                  <span>
+                    Share on <a href="#">Facebook</a>
+                  </span>
+                </p>
+              </footer>
             </div>
-            <footer class="card-footer">
-              <p class="card-footer-item">
-                <span>
-                  View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
-                </span>
-              </p>
-              <p class="card-footer-item">
-                <span>
-                  Share on <a href="#">Facebook</a>
-                </span>
-              </p>
-            </footer>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    
   </div>
 
 </template>
@@ -81,9 +85,6 @@
 </script>
 
 <style lang="css" scoped>
-  .container {
-    padding-top: 60px;
-  }
   #carousel {
     padding: 0rem;
   }
