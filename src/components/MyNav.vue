@@ -22,7 +22,7 @@
 
 			<!-- This "nav-toggle" hamburger menu is only visible on mobile -->
 			<!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-			<span class="nav-toggle" :class="{ 'is-active': toggleOn }" @click="toggle">
+			<span class="nav-toggle" :class="{ 'is-active': menuOn }" @click="toggle">
 				<span></span>
 				<span></span>
 				<span></span>
@@ -33,11 +33,12 @@
 
 			
 
-			<div class="nav-right nav-menu" :class="{ 'is-active': toggleOn }">
-				<router-link  to="/" exact class="nav-item">
+			<div class="nav-right nav-menu" :class="{ 'is-active': menuOn }">
+				<router-link to="/" exact class="nav-item" @click.native="closeMenu">
 					Home
 				</router-link>
-				<router-link  to="/admin" exact class="nav-item">
+
+				<router-link to="/events" exact class="nav-item" @click.native="closeMenu">
 					Events
 				</router-link>
 
@@ -70,21 +71,25 @@
 
 	  data () {
 	    return {
-	      toggleOn: false
+	      menuOn: false
 	    }
 	  },
 
 	  methods: {
 	    toggle () {
-	      this.toggleOn = !this.toggleOn
-	      console.log(this.toggleOn)
+	      this.menuOn = !this.menuOn
+	      console.log(this.menuOn)
+	    },
+	    closeMenu () {
+	      this.menuOn = false
+	      console.log('closed')
 	    }
 	  }
 	}
 </script>
 
 <style lang="css" scoped>
-.nav-item img {
-	max-height: 2.55rem;
-}
+	.nav-item img {
+		max-height: 2.55rem;
+	}
 </style>
