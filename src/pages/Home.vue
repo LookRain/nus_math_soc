@@ -35,7 +35,7 @@
               <footer class="card-footer">
                 <p class="card-footer-item">
                   <span>
-                    View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+                    Become a <router-link to="/join_us" exact>Member</router-link>
                   </span>
                 </p>
                 <p class="card-footer-item">
