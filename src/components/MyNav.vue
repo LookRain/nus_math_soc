@@ -15,7 +15,7 @@
 
 				<a class="nav-item">
 					<span class="icon">
-						<i class="fa fa-facebook"></i>
+						<a href="https://www.facebook.com/nuscoolestsociety" target="_blank"><i class="fa fa-facebook"></i></a>
 					</span>
 				</a>
 			</div>

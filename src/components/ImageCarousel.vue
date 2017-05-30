@@ -22,7 +22,7 @@
 		        pagination: '.swiper-pagination',
 		        paginationClickable: true,
 		        autoplay: 3000,
-		        autoplayDisableOnInteraction: false，
+		        autoplayDisableOnInteraction: false,
 		        autoHeight: true
 		      },
 		      link: 'AGM_2016.jpg',

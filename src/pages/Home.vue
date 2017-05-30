@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero is-info is-bold">
+    <section class="hero is-primary">
       <div class="hero-body">
         <div class="container">
           <div class="columns">
@@ -40,7 +40,7 @@
                 </p>
                 <p class="card-footer-item">
                   <span>
-                    Share on <a href="#">Facebook</a>
+                    Like us on <a href="https://www.facebook.com/nuscoolestsociety" target="_blank">Facebook</a>
                   </span>
                 </p>
               </footer>
