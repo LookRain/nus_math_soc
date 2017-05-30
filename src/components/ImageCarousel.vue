@@ -25,7 +25,6 @@
 		        autoplayDisableOnInteraction: false,
 		        autoHeight: true
 		      },
-		      link: 'AGM_2016.jpg',
 		      carouselImages: [
 					{link: 'AGM_2016', des: 'Maths Society Annual General Meeting 2016'},
 					{link: 'cubeSchool', des: 'Singapore Rubik’s Cube Competitions 2015 School Category'},

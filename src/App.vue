@@ -2,8 +2,6 @@
   <div>
   <my-nav></my-nav>
     <router-view></router-view>
-
-    
   </div>
   
 </template>
@@ -17,7 +15,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="css">
 
 </style>
 
