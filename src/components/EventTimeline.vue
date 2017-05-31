@@ -6,15 +6,15 @@
         <img v-if="!point.img" :src="getDefaultIconUrl()" alt="">
       </div>
 
-      <div class="timeline-content">
+      <div class="timeline-content" :id="point.id">
      
         <h2 v-text="point.name"></h2>
         <p v-if="point.date"><b>Date: </b>{{ point.date }}</p>
         <p v-if="point.startTime"><b>Time: </b>{{ point.startTime }} ~ {{ point.endTime }}</p>
-        <p v-if="point.venue"><b>Venue: </b>{{ point.venue }}</p>
+        <p v-if="point.venue"><b>Venue: </b>{{ point.venue }}<span v-if="point.venueDetails">, {{ point.venueDetails }}</span></p>
 
         <p v-if="point.website">You may find more information on our <a :href="point.website">Official Website.</a></p>
-        <p>
+        <p v-if="point.registrationLink || point.registrationDetails">
           <span v-if="point.registrationLink">Please <a :href="point.registrationLink"><b>register</b></a> using the link <a :href="point.registrationLink">here</a>.</span><br>
           <span v-if="point.registrationDetails">{{ point.registrationDetails }}</span>
         </p>
@@ -22,16 +22,25 @@
         <p v-if="point.description"><b>More Details: </b><pre>{{ point.description }}</pre></p>
         
         <img v-if="point.poster" :src="getPosterUrl(point.poster)" alt="">
+
         <div class="column">
-          <a :href="point.linkUrl"
+          <a :href="point.website"
            class="button is-primary is-outlined"
            target="_blank"
-           v-if="point.linkUrl"
+           v-if="point.website"
            v-html="point.linkText!=undefined?point.linkText:'Read More'"
         ></a>
         </div>
         <div class="column">
-       
+       <div class="modal" :class="is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <p class="image is-4by3">
+      <img src="http://bulma.io/images/placeholders/1280x960.png">
+    </p>
+  </div>
+  <button class="modal-close"></button>
+</div>
         </div>
         
     

@@ -7,13 +7,11 @@ import 'font-awesome/css/font-awesome.min.css'
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
-// import 'bulma/css/bulma.css'
-// import 'bulma'
-import './styles.sass'
 
-// import Buefy from 'buefy'
-// import 'buefy/lib/buefy.css'
-// Vue.use(Buefy)
+import VueScrollTo from 'vue-scrollto'
+Vue.use(VueScrollTo)
+
+import './styles.sass'
 
 Vue.config.productionTip = false
 
