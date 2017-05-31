@@ -1,53 +1,64 @@
 <template>
-<div>
-	<section class="section">
-		<div class="container">
-		<h1 class="title">Events</h1>
-			<event-timeLine :points="points"></event-timeLine>
+  <div>
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column">
+              <h1 class="title">Events
+              </h1>
+              <h2 class="subtitle">Competitions, talks, workshops and more ...
+              </h2>
+            </div>
 
-		</div>
-	</section>
-	
-</div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <event-slider :points="points"></event-slider>
+        
+      </div>
+      
+    </section>
 
-</template>
-<script>
-import EventTimeline from '@/components/EventTimeline'
-import EventsList from '@/components/events.js'
+    <section class="section">
+      <div class="container">
+       <event-timeline :points="points"></event-timeLine>
+       </div>
+     </section>
 
-export default {
-  name: 'Events',
-  components: { 'event-timeLine': EventTimeline },
-  data () {
-    return {
-    	points: [
-      {
-        pointColor: 'red', // important! the color of every time point and you can use red yellow or green
-        img: 'sudoku',
-        title: 'hello world',
-        text: 'first post',
-        linkUrl: 'https://www.google.com',
-        linkText: 'Read detail',
-        date: '2017-1-1',
-        poster: 'cube2016'
-      },
-      {
-        pointColor: 'green', // important! the color of every time point and you can use red yellow or green
-        img: 'rubik',
-        title: 'hello world',
-        text: 'first post',
-        linkUrl: 'https://www.google.com',
-        linkText: 'Read detail',
-        date: '2017-2-1'
+   </div>
+
+ </template>
+
+ <script>
+  import EventTimeline from '@/components/EventTimeline'
+  import EventSlider from '@/components/EventSlider'
+  import EventsList from '@/components/events.js'
+
+  export default {
+    name: 'Events',
+    components: { EventTimeline, EventSlider },
+    data () {
+      return {
+        points: ''
       }
-    ]
+    },
+    mounted () {
+      console.log(EventsList)
+      this.points = EventsList
     }
-  },
-  mounted () {
-    console.log(EventsList)
-  }
 
 }
 </script>
-<style lang="css" scoped>
+<style lang="css">
+/*.container {
+    border-style: solid; border-radius: 3%;  
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:    1px 1px 1px 0px rgba(0, 0, 0, 0.5);
+    box-shadow:         1px 1px 1px 0px rgba(0, 0, 0, 0.5);
+  }*/
 </style>
