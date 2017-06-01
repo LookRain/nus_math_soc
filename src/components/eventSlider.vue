@@ -15,7 +15,6 @@
                 <img v-if="event.img" class="myicon" :src="getIconUrl(event.img)" height="80" width="80">
                 <img v-else class="myicon" :src="getDefaultIconUrl()" height="80" width="80">
               </div>                         
-
               
               <p class="cardText" v-if="event.shortName">{{ event.shortName }}</p>
               <p class="cardText" v-else>{{ event.name }}</p>
