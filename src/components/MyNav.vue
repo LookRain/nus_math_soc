@@ -31,7 +31,7 @@
 			<!-- This "nav-menu" is hidden on mobile -->
 			<!-- Add the modifier "is-active" to display it on mobile -->
 			<transition name="slide-fade">
-			<div v-if="menuOn" class="nav-right nav-menu is-active">
+			<div v-if="menuOn" class="nav-right nav-menu is-active is-hidden-desktop">
 				<router-link to="/" exact class="nav-item" @click.native="closeMenu">
 					Home
 				</router-link>

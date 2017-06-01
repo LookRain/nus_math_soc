@@ -7,8 +7,7 @@
 
       <!-- swiper -->
       <swiper :options="swiperOption" id="slideContainer">
-
-        <swiper-slide v-for="event in points">
+        <swiper-slide v-for="event in points" :key="event.id">
          <div class="card" :id="event.pointColor">
           <div class="column">
             <a href="#" v-scroll-to="'#' + event.id"><div class="card-content" id="slideCard">

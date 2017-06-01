@@ -4,7 +4,7 @@
 		<div class="card-content has-text-centered" id="carousel">
 			<!-- swiper -->
 			<swiper :options="swiperOption">
-				<swiper-slide v-for="img in carouselImages"><img :src="getImageUrl(img.link)" style="width:100%;">
+				<swiper-slide v-for="img in carouselImages" :key="img.link"><img :src="getImageUrl(img.link)" style="width:100%;">
 					<p><b>{{ img.des }}</b></p></swiper-slide>
 					<div class="swiper-pagination" slot="pagination"></div>
 				</swiper>

@@ -14,7 +14,7 @@ let EventsList = [
   {
     name: "Singapore Rubik's Cube Competitions 2017 NUS Cateogry",
     shortName: "NUS Rubik's Cube 2017",
-    img: 'rubik',
+
     pointColor: 'red',
     id: 'cube2017nus',
     venue: 'LT31',

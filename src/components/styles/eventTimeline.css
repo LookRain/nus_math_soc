@@ -299,29 +299,22 @@ pre {
     cursor: hand;
 }
 
-.popUpImg {
-    max-height: calc(100vh - 100px);
-    height: auto;
-    max-width: 100%;
-    width: auto;
-    left: 50%;
-}
-
-.modal-background {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-
-  background-color: rgba(10, 10, 10, 0.40);
-}
-
 
 .stop {
     overflow: hidden;
     position: fixed;
 }
+
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 
 .bounce-enter-active {
   animation: bounce-in .25s;
@@ -339,12 +332,4 @@ pre {
   100% {
     transform: scale(1);
   }
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s ease-out;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
 }

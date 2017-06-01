@@ -1,9 +1,16 @@
 <template>
   <section class="timeline-container timeline">
-    <div @click="changeCurrentTimePoint(point)" v-for="point in points" class="timeline-block">
+  <div class="column">
+        <transition name="fade">
+
+        <image-modal :imageName="activeImage"></image-modal>
+
+        </transition>
+      </div>
+    <div v-for="point in points" class="timeline-block">
       <div class="timeline-img" :class="['timeline-img',point.pointColor===undefined?'red':point.pointColor]">
-        <img v-if="point.img" :src="getIconUrl(point.img)" alt="">
-        <img v-if="!point.img" :src="getDefaultIconUrl()" alt="">
+        <img :src="getIconUrl(point.img)" alt="">
+  
       </div>
 
       <div class="timeline-content" :id="point.id">
@@ -21,7 +28,7 @@
 
         <p v-if="point.description"><b>More Details: </b><span v-html="point.description"></span></p>
         <div class="poster">
-          <img v-if="point.poster" :src="getPosterUrl(point.poster)" @click="openModal(point.poster)">
+          <img v-if="point.poster" :src="getPosterUrl(point.poster)" @click="setActiveImage(point.poster)">
           
         </div>
         
@@ -34,23 +41,6 @@
           v-html="point.linkText!=undefined?point.linkText:'Read More'"
           ></a>
         </div>
-
-        <div class="column">
-        <transition name="fade">
-         <div v-if="modalOpen" class="modal is-active">
-          <div class="modal-background" id="popUpBack" @click="closeModal"></div>
-          <div class="modal-content">
-            <p class="image">
-              <img class="popUpImg" v-if="activeImage" :src="getPosterUrl(activeImage)">
-            </p>
-          </div>
-          <button class="modal-close" @click="closeModal"></button>
-        </div>
-        </transition>
-      </div>
-
-
-
     </div>
   </div>
 </section>
@@ -60,81 +50,39 @@
 </style>
 
 <script>
-  export default{
-    props: {
-      points: {
-        required: true
-      }
-    },
-    data () {
-      return {
-        modalOpen: false,
-        activeImage: ''
-      }
-    },
-    components: {},
-    methods: {
+import ImageModal from './ImageModal'
+import Bus from '../event-bus'
 
-      changeCurrentTimePoint: function (point) {
-        this.$on('currentPoint', point)
-      },
-
-      getIconUrl (imgName) {
-        var defaultImage = require.context('../assets/eventIcons/', false, /\.png$/)
-        if (imgName) {
-          var images = require.context('../assets/eventIcons/', false, /\.png$/)
-          return images('./' + imgName + '.png')
-        } else {
-          return defaultImage('./' + 'compass' + '.png')
-        }
-      },
-
-      getDefaultIconUrl () {
-        var defaultImage = require.context('../assets/eventIcons/', false, /\.png$/)
-        return defaultImage('./' + 'compass' + '.png')
-      },
-
-      getPosterUrl (imgName) {
-        var images = require.context('../assets/images/posters/', false, /\.jpg$/)
-        return images('./' + imgName + '.jpg')
-      },
-      openModal (imgName) {
-        this.activeImage = imgName
-        this.modalOpen = true
-      },
-      closeModal (event) {
-        this.activeImage = ''
-        this.modalOpen = false
-      },
-      closeModalWithEsc (e) {
-        if (e.keyCode === 27 && this.modalOpen) {
-          this.modalOpen = false
-        }
-      },
-      prevent (event) {
-        console.log('something happened')
-        event.preventDefault()
-        event.stopPropagation()
-      },
-      tag (strings, ...values) {
-        console.log(strings.raw[0])
+export default{
+  props: {
+    points: {
+      required: true
+    }
+  },
+  data () {
+    return {
+      activeImage: ''
+    }
+  },
+  components: { ImageModal },
+  methods: {
+    getIconUrl (imgName) {
+      var defaultImage = require.context('../assets/eventIcons/', false, /\.png$/)
+      if (imgName) {
+        var images = require.context('../assets/eventIcons/', false, /\.png$/)
+        return images('./' + imgName + '.png')
       }
+      return defaultImage('./' + 'math' + '.png')
     },
-    created () {
-      document.addEventListener('keydown', this.closeModalWithEsc)
+
+    getPosterUrl (imgName) {
+      var images = require.context('../assets/images/posters/', false, /\.jpg$/)
+      return images('./' + imgName + '.jpg')
     },
-    destroyed () {
-      document.removeEventListener('keydown', this.closeModalWithEsc)
-    },
-    watch: {
-      modalOpen: function (isOpen) {
-        if (isOpen) {
-          document.documentElement.style.overflow = 'hidden'
-          // document.documentElement is the same as using document.querySelector('#root')
-        } else {
-          document.documentElement.style.overflow = 'auto'
-        }
-      }
+    setActiveImage (imgName) {
+      this.activeImage = imgName
+      Bus.fire('invoke')
     }
   }
+}
 </script>
