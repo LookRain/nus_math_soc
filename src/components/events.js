@@ -1,3 +1,15 @@
+/*
+    Rules for adding new events:
+        1. Cut old events into archivedEvents.js in the same folder.
+        2. Add the new event to the front of the EventsList array.
+        3. These fields are must-fill: name, shortname, id.
+        4. Start a new paragraph in description like this:
+            "previous para"
+            +
+            "Start a new paragraph like this", // Can include any kind of html tags
+
+*/
+
 let EventsList = [
   {
     name: "Singapore Rubik's Cube Competitions 2017 NUS Cateogry",
@@ -12,8 +24,8 @@ let EventsList = [
     startTime: '1900',
     endTime: '2200',
     website: 'AY1617/cube/nus.html',
-    description: 'This competition is open for current NUS undergraduate and graduate students only.' +
-						'Events include 2x2, 3x3 and 4x4 cubes.', // Can include any kind of html tags
+    description: '<p>This competition is open for current NUS undergraduate and graduate students only.</p>' +
+                        '<p>Events include 2x2, 3x3 and 4x4 cubes.</p>', // Can include any kind of html tags
     registrationLink: 'https://nus.edu/2jAVHKo',
     registrationDetails: 'Please register by 9th Feb',
     poster: 'cube2017' // relative path
@@ -31,12 +43,8 @@ let EventsList = [
     timelineDate: '12 Oct',
     startTime: '1830',
     endTime: '2100',
-    website: 'AY1617/sudoku', // relative path, optional
-    description: 'You may contact us at sudoku@nusmathsoc.org',
-						/*
-						+
-						"Start a new paragraph like this", // Can include any kind of html tags
-						*/
+    website: 'AY1617/sudoku',
+    description: "You may contact us at <a href='mailto:sudoku@nusmathsoc.org'>sudoku@nusmathsoc.org</a>",
     registrationLink: 'https://mysurvey.nus.edu.sg/EFM/se/54CCD14B75910A80',
     registrationDetails: 'Please register by 8th Oct',
     refreshments: 'Light refreshments will be provided before the prize presentation', // optional

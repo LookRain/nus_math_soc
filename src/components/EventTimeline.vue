@@ -13,13 +13,13 @@
         <p v-if="point.startTime"><b>Time: </b>{{ point.startTime }} ~ {{ point.endTime }}</p>
         <p v-if="point.venue"><b>Venue: </b>{{ point.venue }}<span v-if="point.venueDetails">, {{ point.venueDetails }}</span></p>
 
-        <p v-if="point.website">You may find more information on our <a :href="point.website">Official Website.</a></p>
+        <p v-if="point.website">You may find more information on our <a :href="point.website" target="_blank">Official Website.</a></p>
         <p v-if="point.registrationLink || point.registrationDetails">
           <span v-if="point.registrationLink">Please <a :href="point.registrationLink"><b>register</b></a> using the link <a :href="point.registrationLink">here</a>.</span><br>
           <span v-if="point.registrationDetails">{{ point.registrationDetails }}</span>
         </p>
 
-        <p v-if="point.description"><b>More Details: </b><pre>{{ point.description }}</pre></p>
+        <p v-if="point.description"><b>More Details: </b><span v-html="point.description"></span></p>
         <div class="poster">
           <img v-if="point.poster" :src="getPosterUrl(point.poster)" @click="openModal(point.poster)">
           
@@ -36,8 +36,9 @@
         </div>
 
         <div class="column">
-         <div class="modal" :class="{ 'is-active': modalOpen }" @scroll.prevent>
-          <div class="modal-background" id="popUpBack" @scroll="preventScroll" @click="closeModal" @keyup.enter="closeModal" @touchmove="prevent" ></div>
+        <transition name="fade">
+         <div v-if="modalOpen" class="modal is-active">
+          <div class="modal-background" id="popUpBack" @click="closeModal"></div>
           <div class="modal-content">
             <p class="image">
               <img class="popUpImg" v-if="activeImage" :src="getPosterUrl(activeImage)">
@@ -45,6 +46,7 @@
           </div>
           <button class="modal-close" @click="closeModal"></button>
         </div>
+        </transition>
       </div>
 
 
@@ -114,10 +116,8 @@
         event.preventDefault()
         event.stopPropagation()
       },
-      preventScroll (event) {
-        console.log('something happened')
-        event.preventDefault()
-        event.stopPropagation()
+      tag (strings, ...values) {
+        console.log(strings.raw[0])
       }
     },
     created () {

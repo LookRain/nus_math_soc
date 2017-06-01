@@ -313,13 +313,38 @@ pre {
   right: 0;
   top: 0;
   bottom: 0;
-  opacity: .4;
-  z-index: 1000;
-    background-color: rgba(10, 10, 10, 0.40);
+
+  background-color: rgba(10, 10, 10, 0.40);
 }
 
 
 .stop {
     overflow: hidden;
     position: fixed;
+}
+
+.bounce-enter-active {
+  animation: bounce-in .25s;
+}
+.bounce-leave-active {
+  animation: bounce-in .25s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
