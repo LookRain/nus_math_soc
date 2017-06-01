@@ -17,7 +17,7 @@
         </div>
       </div>
     </section>
-    
+
     <section class="section">
       <div class="container">
         <event-slider :points="points"></event-slider>
@@ -31,7 +31,7 @@
        <event-timeline :points="points"></event-timeLine>
        </div>
      </section>
-     <button class="button is-primary" id="floating"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+     <button class="button is-primary" id="floating"><i class="fa fa-arrow-up" aria-hidden="true" v-scroll-to="'#nav'"></i></button>
 
    </div>
 
@@ -54,7 +54,6 @@
       console.log(EventsList)
       this.points = EventsList
     }
-
   }
 </script>
 <style lang="css" scoped>

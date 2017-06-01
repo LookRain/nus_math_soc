@@ -7,7 +7,7 @@
       </div>
 
       <div class="timeline-content" :id="point.id">
-     
+
         <h2 v-text="point.name"></h2>
         <p v-if="point.date"><b>Date: </b>{{ point.date }}</p>
         <p v-if="point.startTime"><b>Time: </b>{{ point.startTime }} ~ {{ point.endTime }}</p>
@@ -20,34 +20,38 @@
         </p>
 
         <p v-if="point.description"><b>More Details: </b><pre>{{ point.description }}</pre></p>
+        <div class="poster">
+          <img v-if="point.poster" :src="getPosterUrl(point.poster)" @click="openModal(point.poster)">
+          
+        </div>
         
-        <img v-if="point.poster" :src="getPosterUrl(point.poster)" alt="">
 
         <div class="column">
           <a :href="point.website"
-           class="button is-primary is-outlined"
-           target="_blank"
-           v-if="point.website"
-           v-html="point.linkText!=undefined?point.linkText:'Read More'"
-        ></a>
+          class="button is-primary is-outlined"
+          target="_blank"
+          v-if="point.website"
+          v-html="point.linkText!=undefined?point.linkText:'Read More'"
+          ></a>
         </div>
+
         <div class="column">
-       <div class="modal" :class="is-active">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <p class="image is-4by3">
-      <img src="http://bulma.io/images/placeholders/1280x960.png">
-    </p>
-  </div>
-  <button class="modal-close"></button>
-</div>
+         <div class="modal" :class="{ 'is-active': modalOpen }" @scroll.prevent>
+          <div class="modal-background" id="popUpBack" @click="closeModal" @keyup.enter="closeModal"></div>
+          <div class="modal-content">
+            <p class="image">
+              <img class="popUpImg" v-if="activeImage" :src="getPosterUrl(activeImage)">
+            </p>
+          </div>
+          <button class="modal-close" @click="closeModal"></button>
         </div>
-        
-    
-        
       </div>
+
+
+
     </div>
-  </section>
+  </div>
+</section>
 </template>
 
 <style src="./styles/eventTimeline.css" scoped>
@@ -62,12 +66,13 @@
     },
     data () {
       return {
-
+        modalOpen: false,
+        activeImage: ''
       }
     },
     components: {},
     methods: {
-  
+
       changeCurrentTimePoint: function (point) {
         this.$on('currentPoint', point)
       },
@@ -90,6 +95,40 @@
       getPosterUrl (imgName) {
         var images = require.context('../assets/images/posters/', false, /\.jpg$/)
         return images('./' + imgName + '.jpg')
+      },
+      openModal (imgName) {
+        this.activeImage = imgName
+        this.modalOpen = true
+      },
+      closeModal () {
+        this.activeImage = ''
+        this.modalOpen = false
+      },
+      closeModalWithEsc (e) {
+        if (e.keyCode === 27 && this.modalOpen) {
+          this.modalOpen = false
+        }
+      }
+    },
+    created () {
+      document.addEventListener('keydown', this.closeModalWithEsc)
+    },
+    destroyed () {
+      document.removeEventListener('keydown', this.closeModalWithEsc)
+    },
+    watch: {
+      modalOpen: function (newVal) {
+        var mo = function (e) { e.preventDefault() }
+      // document.body.style.overflow = 'hidden'
+        document.addEventListener('touchmove', mo, false)
+      // var className = 'modal-open'
+
+      // // console.log(document.body.classList)
+      // if (newVal) {
+      //   document.body.classList.add(className)
+      // } else {
+      //   document.body.classList.remove(className)
+      // }
       }
     }
   }

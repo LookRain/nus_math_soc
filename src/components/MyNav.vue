@@ -84,6 +84,16 @@
 	      this.menuOn = false
 	      console.log('closed')
 	    }
+	  },
+
+	  watch: {
+	  	// if click event happens outside the menu -> close the menu
+	    menuOn: function (newVal) {
+	      console.log('from watcher: ' + newVal)
+	      for (var section of document.querySelectorAll('.section')) {
+	        section.addEventListener('click', this.closeMenu)
+	      }
+	    }
 	  }
 	}
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-  <my-nav></my-nav>
+  <my-nav id="nav"></my-nav>
   <transition name="slide-fade">
     <router-view></router-view>
     </transition>
