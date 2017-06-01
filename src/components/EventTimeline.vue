@@ -37,7 +37,7 @@
 
         <div class="column">
          <div class="modal" :class="{ 'is-active': modalOpen }" @scroll.prevent>
-          <div class="modal-background" id="popUpBack" @click="closeModal" @keyup.enter="closeModal"></div>
+          <div class="modal-background" id="popUpBack" @scroll="preventScroll" @click="closeModal" @keyup.enter="closeModal" @touchmove="prevent" ></div>
           <div class="modal-content">
             <p class="image">
               <img class="popUpImg" v-if="activeImage" :src="getPosterUrl(activeImage)">
@@ -100,7 +100,7 @@
         this.activeImage = imgName
         this.modalOpen = true
       },
-      closeModal () {
+      closeModal (event) {
         this.activeImage = ''
         this.modalOpen = false
       },
@@ -108,6 +108,16 @@
         if (e.keyCode === 27 && this.modalOpen) {
           this.modalOpen = false
         }
+      },
+      prevent (event) {
+        console.log('something happened')
+        event.preventDefault()
+        event.stopPropagation()
+      },
+      preventScroll (event) {
+        console.log('something happened')
+        event.preventDefault()
+        event.stopPropagation()
       }
     },
     created () {
@@ -117,18 +127,13 @@
       document.removeEventListener('keydown', this.closeModalWithEsc)
     },
     watch: {
-      modalOpen: function (newVal) {
-        var mo = function (e) { e.preventDefault() }
-      // document.body.style.overflow = 'hidden'
-        document.addEventListener('touchmove', mo, false)
-      // var className = 'modal-open'
-
-      // // console.log(document.body.classList)
-      // if (newVal) {
-      //   document.body.classList.add(className)
-      // } else {
-      //   document.body.classList.remove(className)
-      // }
+      modalOpen: function (isOpen) {
+        if (isOpen) {
+          document.documentElement.style.overflow = 'hidden'
+          // document.documentElement is the same as using document.querySelector('#root')
+        } else {
+          document.documentElement.style.overflow = 'auto'
+        }
       }
     }
   }

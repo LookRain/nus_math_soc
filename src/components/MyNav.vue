@@ -81,19 +81,28 @@
 	      console.log(this.menuOn)
 	    },
 	    closeMenu () {
-	      this.menuOn = false
-	      console.log('closed')
+	      if (this.menuOn) {
+	        this.menuOn = false
+	        console.log('closed')
+	      }
+	    }
+	  },
+	  destroyed () {
+	    for (let section of document.querySelectorAll('.section')) {
+	      section.addEventListener('click', this.closeMenu)
 	    }
 	  },
 
 	  watch: {
-	  	// if click event happens outside the menu -> close the menu
-	    menuOn: function (newVal) {
-	      console.log('from watcher: ' + newVal)
-	      for (var section of document.querySelectorAll('.section')) {
-	        section.addEventListener('click', this.closeMenu)
-	      }
-	    }
+	  	// if click event happens outside the menu AND menu is currently open -> close the menu
+	  	menuOn: function (newVal) {
+	  		if (newVal) {
+	  			console.log('from watcher: ' + newVal)
+	  			for (let section of document.querySelectorAll('.section')) {
+	  				section.addEventListener('click', this.closeMenu)
+	  			}
+	  		}
+	  	}
 	  }
 	}
 </script>
