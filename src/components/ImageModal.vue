@@ -1,10 +1,10 @@
 <template>
 
 <div v-if="modalOpen" class="modal is-active">
-          <div class="modal-background" @click="closeModal" @touchmove="prevent" @mousemove="prevent" @drag="prevent"></div>
-          <div class="modal-content">
+          <div class="overlay" @click="closeModal" @touchmove="prevent" @mousemove="prevent" @drag="prevent"></div>
+          <div class="modal-content" @touchmove="prevent" @mousemove="prevent" @drag="prevent">
             
-              <img class="popUpImg" :src="getPosterUrl(imageName)">
+              <img class="popUpImg" :src="getPosterUrl(imageName)" @touchmove="prevent" @mousemove="prevent" @drag="prevent">
             
           </div>
           <button class="modal-close" @click="closeModal"></button>
@@ -105,6 +105,9 @@ export default {
 .modal-content {
   z-index: 1500;
 }
+.modal-close {
+  z-index: 3000;
+}
 .popUpImg {
     max-height: calc(100vh - 100px);
     height: auto;
@@ -113,7 +116,16 @@ export default {
     left: 50%;
     z-index: 2000;
 }
-
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: .4;
+  z-index: 1000;
+}
 
 
 </style>
