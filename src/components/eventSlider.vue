@@ -15,11 +15,10 @@
                 <img v-if="event.img" class="myicon" :src="getIconUrl(event.img)" height="80" width="80">
                 <img v-else class="myicon" :src="getDefaultIconUrl()" height="80" width="80">
               </div>                         
-
               
               <p class="cardText" v-if="event.shortName">{{ event.shortName }}</p>
               <p class="cardText" v-else>{{ event.name }}</p>
-              <small class="cardText" v-if="event.date">{{ event.date }}</small>
+              <small class="cardText" v-if="event.date">{{ getDate(event.date) }}</small>
             </div>
           </a>
         </div>  
@@ -34,50 +33,55 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      points: {
-        required: true
-      }
-    },
-    data () {
-      return {
-        swiperOption: {
-          pagination: '.swiper-pagination',
-          nextButton: '.swiper-button-next',
-          prevButton: '.swiper-button-prev',
-          effect: 'coverflow',
-          centeredSlides: true,
-          slidesPerView: 3,
-          paginationClickable: true,
-          coverflow: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true
-          }
-  
-        }
-      }
-    },
-    methods: {
-      getIconUrl (imgName) {
-        var defaultImage = require.context('../assets/eventIcons/', false, /\.png$/)
-        if (imgName) {
-          var images = require.context('../assets/eventIcons/', false, /\.png$/)
-          return images('./' + imgName + '.png')
-        } else {
-          return defaultImage('./' + 'compass' + '.png')
-        }
-      },
+import moment from 'moment'
 
-      getDefaultIconUrl () {
-        var defaultImage = require.context('../assets/eventIcons/', false, /\.png$/)
-        return defaultImage('./' + 'math' + '.png')
+export default {
+  props: {
+    points: {
+      required: true
+    }
+  },
+  data () {
+    return {
+      swiperOption: {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        effect: 'coverflow',
+        centeredSlides: true,
+        slidesPerView: 3,
+        paginationClickable: true,
+        coverflow: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true
+        }
+
       }
     }
+  },
+  methods: {
+    getIconUrl (imgName) {
+      var defaultImage = require.context('../assets/eventIcons/', false, /\.png$/)
+      if (imgName) {
+        var images = require.context('../assets/eventIcons/', false, /\.png$/)
+        return images('./' + imgName + '.png')
+      } else {
+        return defaultImage('./' + 'compass' + '.png')
+      }
+    },
+
+    getDefaultIconUrl () {
+      var defaultImage = require.context('../assets/eventIcons/', false, /\.png$/)
+      return defaultImage('./' + 'math' + '.png')
+    },
+    getDate (d) {
+      return moment(d).format('MMM YYYY')
+    }
   }
+}
 </script>
 
 <style>
@@ -118,4 +122,7 @@
     color: black;
   }
 
+#carousel {
+  padding: 0rem;
+}
 </style>

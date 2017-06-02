@@ -13,7 +13,7 @@
 let EventsList = [
   {
     name: "Singapore Rubik's Cube Competitions 2017 NUS Cateogry",
-    shortName: "NUS Rubik's Cube 2017",
+    shortName: 'NUS Cube',
 
     pointColor: 'red',
     id: 'cube2017nus',
@@ -32,7 +32,7 @@ let EventsList = [
   },
   {
     name: 'NUS Sudoku Competition 2016',
-    shortName: 'NUS Sudoku 2016',
+    shortName: 'NUS Sudoku',
     img: 'sudoku',
     pointColor: 'green',
     id: 'sudoku2016',
@@ -53,7 +53,7 @@ let EventsList = [
   },
   {
     name: "Singapore Rubik's Cube Competitions 2016",
-    shortName: `SG Rubik's Cube 2016`,
+    shortName: `SG Cube`,
     img: 'rubik',
     pointColor: 'red',
     id: 'cube2016',
@@ -69,7 +69,7 @@ let EventsList = [
   },
   {
     name: "Singapore Rubik's Cube Competitions 2016 NUS Cateogry",
-    shortName: `NUS Rubik's Cube 2016`,
+    shortName: `NUS Cube`,
     img: 'rubik',
     pointColor: 'red',
     id: 'cube2016nus',
@@ -100,11 +100,11 @@ let EventsList = [
     startTime: '1900',
     endTime: '2100',
     poster: 'latex2016',
-    description: ` <b>LaTeX</b> is a document preparation system widely used to typeset high quality documents,
-						especially in mathematics and sciences.
-						<u><b>No prior experience</b></u> in LaTeX is required for this workshop. Participants must bring 
-						their own laptops, with the required software installed (instructions will be give upon registration).' +
-						"Enquiries are welcome at latexify@gmail.com"`
+    description: ' <p><b>LaTeX</b> is a document preparation system widely used to typeset high quality documents,\n' +
+                        'especially in mathematics and sciences.</p>' +
+                        '<p><u><b>No prior experience</b></u> in LaTeX is required for this workshop. Participants must bring \n' +
+                        'their own laptops, with the required software installed (instructions will be give upon registration).</p>' +
+                        '<p>Enquiries are welcome at <a href="mailto:latexify@gmail.com">latexify@gmail.com</a></p>'
 
   },
   {

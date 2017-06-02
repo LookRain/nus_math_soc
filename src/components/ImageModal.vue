@@ -1,7 +1,7 @@
 <template>
 
 <div v-if="modalOpen" class="modal is-active">
-          <div class="modal-background" @click="closeModal"></div>
+          <div class="modal-background" @click="closeModal" @touchmove="prevent" @mousemove="prevent" @drag="prevent"></div>
           <div class="modal-content">
             
               <img class="popUpImg" :src="getPosterUrl(imageName)">
@@ -46,6 +46,31 @@ export default {
       if (e.keyCode === 27) {
         this.closeModal()
       }
+    },
+    prevent (event) {
+      console.log('666')
+      event.preventDefault()
+      event.stopPropagation()
+    },
+    preventScrolling () {
+      if (this.locked) return
+    // body 操作
+      const body = document.getElementsByTagName('body')[0]
+      const html = document.getElementsByTagName('html')[0]
+      this.bodyOverflow = body.style.overflow
+      this.htmlOverflow = html.style.overflow
+      body.style.overflow = 'hidden'
+      html.style.overflow = 'hidden'
+      this.locked = true
+    },
+    allowScrolling () {
+      const body = document.getElementsByTagName('body')[0]
+      const html = document.getElementsByTagName('html')[0]
+      body.style.overflow = this.bodyOverflow || ''
+      html.style.overflow = this.htmlOverflow || ''
+      this.bodyOverflow = null
+      this.htmlOverflow = null
+      this.locked = false
     }
   },
   mounted () {
@@ -58,31 +83,37 @@ export default {
   destroyed () {
     document.removeEventListener('keydown', this.closeModalWithEsc)
   },
+
   watch: {
     modalOpen: function (isOpen) {
       if (isOpen) {
-        document.documentElement.style.overflow = 'hidden'
-          // document.documentElement is the same as using document.querySelector('#root')
+        this.preventScrolling()
+        // document.documentElement is the same as using document.querySelector('#root')
       } else {
-        document.documentElement.style.overflow = 'auto'
+        this.allowScrolling()
       }
     }
   }
 }
 </script>
 <style lang="css" scoped>
-
+.modal-background {
+  position: fixed;
+  background-color: rgba(10, 10, 10, 0.90);
+  z-index: 1000;
+}
+.modal-content {
+  z-index: 1500;
+}
 .popUpImg {
     max-height: calc(100vh - 100px);
     height: auto;
     max-width: 100%;
     width: auto;
     left: 50%;
+    z-index: 2000;
 }
 
-.modal-background {
-  position: fixed;
-  background-color: rgba(10, 10, 10, 0.90);
-}
+
 
 </style>

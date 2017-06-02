@@ -40,21 +40,21 @@
 					Events
 				</router-link>
 
-				<a class="nav-item">
+				<router-link to="/pyp" exact class="nav-item" @click.native="closeMenu">
 					PYP
-				</a>
+				</router-link>
 
-				<a class="nav-item">
+				<router-link to="/join_us" exact class="nav-item" @click.native="closeMenu">
 					Join us
-				</a>
+				</router-link>
 
-				<a class="nav-item">
+				<router-link to="/about_us" exact class="nav-item" @click.native="closeMenu">
 					About us
-				</a>
+				</router-link>
 
-				<a class="nav-item">
+				<router-link to="/contact_us" exact class="nav-item" @click.native="closeMenu">
 					Contact us
-				</a>
+				</router-link>
 
 			</div>
 			</transition>
@@ -68,21 +68,21 @@
 					Events
 				</router-link>
 
-				<a class="nav-item">
+				<router-link to="/pyp" exact class="nav-item" @click.native="closeMenu">
 					PYP
-				</a>
+				</router-link>
 
-				<a class="nav-item">
+				<router-link to="/join_us" exact class="nav-item" @click.native="closeMenu">
 					Join us
-				</a>
+				</router-link>
 
-				<a class="nav-item">
+				<router-link to="/about_us" exact class="nav-item" @click.native="closeMenu">
 					About us
-				</a>
+				</router-link>
 
-				<a class="nav-item">
+				<router-link to="/contact_us" exact class="nav-item" @click.native="closeMenu">
 					Contact us
-				</a>
+				</router-link>
 
 			</div>
 		</div>
