@@ -53,15 +53,21 @@
         topButtonOn: false
       }
     },
-    created () {
-      this.points = EventsList
-      document.addEventListener('scroll', () => {
+    methods: {
+      checkScroll () {
         if (document.body.scrollTop > 1500) {
           this.topButtonOn = true
         } else {
           this.topButtonOn = false
         }
-      })
+      }
+    },
+    created () {
+      this.points = EventsList
+      document.addEventListener('scroll', this.checkScroll)
+    },
+    destroyed () {
+      document.removeEventListener('scroll', this.checkScroll)
     }
   }
 </script>

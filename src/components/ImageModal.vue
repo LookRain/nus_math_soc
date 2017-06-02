@@ -33,9 +33,6 @@ export default {
       var images = require.context('../assets/images/posters/', false, /\.jpg$/)
       return images('./' + imgName + '.jpg')
     },
-    test () {
-    	console.log('from test method')
-    },
     wakeModal () {
       this.modalOpen = true
     },
@@ -48,7 +45,6 @@ export default {
       }
     },
     prevent (event) {
-      console.log('666')
       event.preventDefault()
       event.stopPropagation()
     },

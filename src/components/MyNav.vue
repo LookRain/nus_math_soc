@@ -104,12 +104,10 @@
 	  methods: {
 	    toggle () {
 	      this.menuOn = !this.menuOn
-	      console.log(this.menuOn)
 	    },
 	    closeMenu () {
 	      if (this.menuOn) {
 	        this.menuOn = false
-	        console.log('closed')
 	      }
 	    }
 	  },
@@ -123,7 +121,6 @@
 	  	// if click event happens outside the menu AND menu is currently open -> close the menu
 	  	menuOn: function (newVal) {
 	  		if (newVal) {
-	  			console.log('from watcher: ' + newVal)
 	  			for (let section of document.querySelectorAll('.section')) {
 	  				section.addEventListener('click', this.closeMenu)
 	  			}
