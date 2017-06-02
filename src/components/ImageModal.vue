@@ -73,9 +73,6 @@ export default {
       this.locked = false
     }
   },
-  mounted () {
-  	console.log('hey')
-  },
   created () {
     document.addEventListener('keydown', this.closeModalWithEsc)
     Bus.listen('invoke', () => { this.wakeModal() })
@@ -108,7 +105,16 @@ export default {
 .modal-close {
   z-index: 3000;
 }
+.modal-content {
+  overflow: hidden;
+  margin: auto;
+  max-height: calc(100vh - 100px);
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
 .popUpImg {
+    margin: auto;
     max-height: calc(100vh - 100px);
     height: auto;
     max-width: 100%;

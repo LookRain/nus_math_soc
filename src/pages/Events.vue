@@ -31,7 +31,9 @@
        <event-timeline :points="points"></event-timeLine>
        </div>
      </section>
-     <button class="button is-primary" id="floating"><i class="fa fa-arrow-up" aria-hidden="true" v-scroll-to="'#nav'"></i></button>
+     <transition name="bounce">
+     <button v-if="topButtonOn" class="button is-primary" id="floating" v-scroll-to="'#nav'"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+     </transition>
 
    </div>
 
@@ -47,16 +49,23 @@
     components: { EventTimeline, EventSlider },
     data () {
       return {
-        points: ''
+        points: '',
+        topButtonOn: false
       }
     },
-    mounted () {
-      console.log(EventsList)
+    created () {
       this.points = EventsList
+      document.addEventListener('scroll', () => {
+        if (document.body.scrollTop > 1500) {
+          this.topButtonOn = true
+        } else {
+          this.topButtonOn = false
+        }
+      })
     }
   }
 </script>
-<style lang="css" scoped>
+<style lang="css" scoped>  
   #floating {
     position: fixed; 
     right: 10px; 
@@ -66,4 +75,26 @@
     height:50px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); 
   }
+
+
+.bounce-enter-active {
+  animation: bounce-up 0.25s;
+}
+.bounce-leave-active {
+  animation: bounce-up 0.25s reverse;
+}
+@keyframes bounce-up {
+  0% {
+    transform: translateY(5rem);
+    /*transform: scale(0);*/
+  }
+  50% {
+    transform: translateY(-1.5rem);
+    /*transform: scale(1.3);*/
+  }
+  100% {
+    transform: translateY(0rem);
+    /*transform: scale(1);*/
+  }
+}
 </style>
