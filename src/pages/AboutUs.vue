@@ -7,7 +7,7 @@
           <div class="column">
             <h1 class="title">About Us
             </h1>
-            <h2 class="subtitle">A little story story time...
+            <h2 class="subtitle">A little story time...
             </h2>
           </div>
         </div>          
@@ -20,7 +20,10 @@
      <div class="columns">
        <div class="column is-3">
          <p v-html="description"></p>
-       </div>
+       </div> 
+
+       <hr>
+
        <div class="column is-9">
          <h2 class="subtitle"><b>NUS Mathematics Society 32nd Management Committee:</b></h2>
          <table class="table is-bordered">
@@ -39,12 +42,6 @@
         </table>
       </div>
     </div>
-    
-
-    <hr>
-
-    
-
     <hr>
     
     <img :src="groupPhoto" alt="">
