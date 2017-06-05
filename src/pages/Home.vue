@@ -24,7 +24,7 @@
           <div class="column is-8">
             <image-carousel></image-carousel>
           </div>
-
+          <hr>
           <div class="column is-4">
             <div class="card">
 
@@ -55,23 +55,23 @@
 </template>
 
 <script>
-import ImageCarousel from '@/components/ImageCarousel'
+  import ImageCarousel from '@/components/ImageCarousel'
 
-export default {
-  name: 'Home',
-  components: { 'image-carousel': ImageCarousel },
-  data () {
-    return {
-      title: '',
-      description: ['NUS Mathematics Society is a group of energetic and fun-loving people who organize exciting events for all those who have an interest in Mathematics.',
-        ' NUS Mathematics Society has organized various events ranging from intra-faculty level to international level. Some of the major events include the Singapore Rubik’s Cube Competition, NUS Sudoku Competition, Enrichment Talks and Student Staff Games.']
+  export default {
+    name: 'Home',
+    components: { 'image-carousel': ImageCarousel },
+    data () {
+      return {
+        title: '',
+        description: ['NUS Mathematics Society is a group of energetic and fun-loving people who organize exciting events for all those who have an interest in Mathematics.',
+          ' NUS Mathematics Society has organized various events ranging from intra-faculty level to international level. Some of the major events include the Singapore Rubik’s Cube Competition, NUS Sudoku Competition, Enrichment Talks and Student Staff Games.']
+      }
+    },
+    methods: {
+
     }
-  },
-  methods: {
 
   }
-
-}
 </script>
 
 <style lang="css" scoped>
