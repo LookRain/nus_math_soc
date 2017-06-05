@@ -22,6 +22,32 @@
 <style lang="css">
   /* Enter and leave animations can use different */
   /* durations and timing functions.              */
+  @media screen and (min-width: 1000px) {
+    .container {
+      margin: 0 auto;
+      max-width: 960px;
+      width: 960px;
+    }
+    .container.is-fluid {
+      margin: 0 20px;
+      max-width: none;
+      width: auto;
+    }
+  }
+
+  @media screen and (min-width: 1192px) {
+    .container {
+      max-width: 1152px;
+      width: 1152px;
+    }
+  }
+
+  @media screen and (min-width: 1384px) {
+    .container {
+      max-width: 1200px;
+      width: 1200px;
+    }
+  }
   .slide-fade-enter-active {
     transition: all .2s ease;
   }
