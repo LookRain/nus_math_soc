@@ -17,24 +17,32 @@
 
   <section class="section">
    <div class="container">
-    <p v-html="description"></p>
+     <div class="columns">
+       <div class="column is-3">
+         <p v-html="description"></p>
+       </div>
+       <div class="column is-9">
+         <table class="table is-bordered">
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="person in exco">
+              <td>{{ person.position }}</td>
+              <td>{{ person.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
 
     <hr>
 
-    <table class="table is-bordered">
-      <thead>
-        <tr>
-          <th>Position</th>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="person in exco">
-          <td>{{ person.position }}</td>
-          <td>{{ person.name }}</td>
-        </tr>
-      </tbody>
-    </table>
+    
 
     <hr>
     
