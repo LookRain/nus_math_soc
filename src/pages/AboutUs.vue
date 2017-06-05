@@ -23,8 +23,9 @@
        </div> 
 
        <hr>
+       <div class="column is-1"></div>
 
-       <div class="column is-9">
+       <div class="column is-8">
          <h2 class="subtitle"><b>NUS Mathematics Society 32nd Management Committee:</b></h2>
          <table class="table is-bordered">
           <thead>
