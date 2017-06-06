@@ -5,6 +5,7 @@ import Events from '@/pages/Events'
 import JoinUs from '@/pages/JoinUs'
 import AboutUs from '@/pages/AboutUs'
 import ContactUs from '@/pages/ContactUs'
+import Pyp from '@/pages/Pyp'
 Vue.use(Router)
 
 export default new Router({
@@ -33,6 +34,11 @@ export default new Router({
       path: '/contact_us',
       name: 'ContactUs',
       component: ContactUs
+    },
+    {
+      path: '/pyp',
+      name: 'Pyp',
+      component: Pyp
     }
   ]
 })
