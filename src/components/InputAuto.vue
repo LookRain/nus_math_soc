@@ -2,7 +2,7 @@
 	<div class="field">
 		<label class="label">Module Code</label>
 		<p class="control">
-			<input class="input" type="text" placeholder="Text input" @focus="getFocus" v-model="searchInput" @blur="loseFocus">
+			<input class="input" type="text" placeholder="Text input" @focus="getFocus" v-model="searchInput" @blur="loseFocus" @click="getFocus" @keyup="getFocus">
 			<ul class="drop-ul" v-show="shouldShow">
 				<li v-for="(item, index) in searchResult" @mousedown="select(index)" class="drop-li" @mouseover="setHighlight(index)" :class="{ 'highlighted': highlightIndex===index }">{{ item }}</li>
 				
@@ -72,6 +72,9 @@
 	  },
 	  watch: {
 	  	searchInput (val) {
+	  		if (val) {
+	  			this.searchInput = val.trim()
+	  		}
 	  		this.searchResult = this.search(val)
 	  	},
 	  	searchResult (val) {
@@ -80,6 +83,9 @@
 	  		} else {
 	  			this.resultEmpty = true
 	  		}
+	  		this.shouldShow = this.isOpen && !this.resultEmpty
+	  	},
+	  	isOpen (val) {
 	  		this.shouldShow = this.isOpen && !this.resultEmpty
 	  	}
 	  }
