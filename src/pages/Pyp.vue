@@ -27,9 +27,9 @@
 				<div class="field">
 					<label class="label">Name</label>
 					<p class="control">
-						<input class="input" type="text" placeholder="Text input">
+						<input class="input" type="text" placeholder="Text input" @keyup="search(searchInput)" v-model="searchInput">
 						<ul class="drop-ul">
-							<li v-for="(item, index) in ary" class="drop-li" @mouseover="setHighlight(index)" :class="{ 'highlighted': highlightIndex===index }">{{ item }}</li>
+							<li v-for="(item, index) in searchResult" class="drop-li" @mouseover="setHighlight(index)" :class="{ 'highlighted': highlightIndex===index }">{{ item }}</li>
 							
 						</ul>
 					</p>
@@ -48,31 +48,47 @@
 	  name: 'Pyp',
 	  data () {
 	    return {
-	      ary: ['a', 'b', 'c', 'd', 'e'],
+	      ary: ['abc', 'bbcx', 'c', 'de', 'eaxa'],
+	      searchResult: [],
 	      highlightIndex: -1,
-	      b: true
+	      b: true,
+	      searchInput: ''
+
 	    }
 	  },
 	  methods: {
 	    setHighlight (id) {
-	      console.log(id)
+	      // console.log(id)
 	      this.highlightIndex = id
+	    },
+	    search (input) {
+	    	if (!input) {
+	    		console.log('empty')
+	    		this.searchResult = []
+	    		return
+	    	}
+	    	let result = []
+	    	result = this.ary.filter(code => {
+	    		return code.includes(input)
+	    	})
+	    	console.log(result)
+	    	this.searchResult = result
 	    }
 	  },
 	  created () {
-	    window.axios.get('http://nusmathsoc.org/php/pyp.php?cmd=moduleList').then((response) => {
-	      console.log(response)
-	      this.msg = response.data
-	    })
+	  	window.axios.get('http://nusmathsoc.org/php/pyp.php?cmd=moduleList').then((response) => {
+	  		console.log(response)
+	  		this.msg = response.data
+	  	})
 	  },
 	  watch: {
-	    highlightIndex (val) {
-	      if (val === -1) {
+	  	highlightIndex (val) {
+	  		if (val === -1) {
 
-	      } else {
-	        console.log(val)
-	      }
-	    }
+	  		} else {
+	        // console.log(val)
+	  }
+	  }
 	  }
 	}
 </script>
