@@ -35,7 +35,9 @@
 					</p>
 					
 				</div>
-
+				<br><br><br><br>
+				test
+				{{ finalResult }}
 
 				
 			</div>
@@ -48,11 +50,12 @@
 	  name: 'Pyp',
 	  data () {
 	    return {
-	      ary: ['abc', 'bbcx', 'c', 'de', 'eaxa'],
+	      moduleArray: [],
 	      searchResult: [],
 	      highlightIndex: -1,
 	      b: true,
-	      searchInput: ''
+	      searchInput: '',
+	      finalResult: []
 
 	    }
 	  },
@@ -68,27 +71,33 @@
 	    		return
 	    	}
 	    	let result = []
-	    	result = this.ary.filter(code => {
+	    	result = this.moduleArray.filter(code => {
 	    		return code.includes(input)
 	    	})
 	    	console.log(result)
 	    	this.searchResult = result
+	    },
+	    search2 (input) {
+	    	if (!input) {
+	    		return []
+	    	}
+	    	let result = []
+	    	result = this.moduleArray.filter(code => code.includes(input))
+	    	console.log(result)
+	    	return result
 	    }
 	  },
 	  created () {
 	  	window.axios.get('http://nusmathsoc.org/php/pyp.php?cmd=moduleList').then((response) => {
 	  		console.log(response)
-	  		this.msg = response.data
+	  		this.moduleArray = response.data
 	  	})
 	  },
 	  watch: {
-	  	highlightIndex (val) {
-	  		if (val === -1) {
+	  	searchInput (val) {
+	  		this.finalResult = this.search2(val)
+	  	}
 
-	  		} else {
-	        // console.log(val)
-	  }
-	  }
 	  }
 	}
 </script>
