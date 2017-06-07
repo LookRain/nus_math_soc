@@ -5,9 +5,9 @@
 				<div class="container">
 					<div class="columns">
 						<div class="column">
-							<h1 class="title">Events
+							<h1 class="title">Past Year Papers
 							</h1>
-							<h2 class="subtitle">Competitions, talks, workshops and more ...
+							<h2 class="subtitle">More papers and exciting features coming soon...
 							</h2>
 						</div>
 
@@ -41,21 +41,21 @@
 	import Bus from '@/event-bus'
 
 	export default {
-	  name: 'Pyp',
-	  data () {
-	    return {
-	      searchActive: false,
-	      moduleArrayRaw: [],
-	      module: '',
-	      pypListRaw: [],
-	      shoudDisplay: false,
-	      pypDir: 'http://nusmathsoc.org/PYP/'
-	    }
-	  },
-	  components: { InputAuto },
-	  methods: {
-	    search () {
-	      this.pypListRaw = []
+		name: 'Pyp',
+		data () {
+			return {
+				searchActive: false,
+				moduleArrayRaw: [],
+				module: '',
+				pypListRaw: [],
+				shoudDisplay: false,
+				pypDir: 'http://nusmathsoc.org/PYP/'
+			}
+		},
+		components: { InputAuto },
+		methods: {
+			search () {
+				this.pypListRaw = []
 	      // console.log(this.module)
 	      this.searchActive = true
 	      window.axios.get('http://nusmathsoc.org/php/getpyplist.php?module=' + this.module).then((response) => {
@@ -64,46 +64,46 @@
 	      })
 	    },
 	    clean (input) {
-	      if (!input.match(/[0-9a-z]/i)) {
-	        return ''
-	      } else {
-	        return input
-	      }
+	    	if (!input.match(/[0-9a-z]/i)) {
+	    		return ''
+	    	} else {
+	    		return input
+	    	}
 	    }
 	  },
 	  watch: {
-	    pypList (val) {
-	      if (val) {
-	        this.shoudDisplay = false
-	      } else {
-	        this.shoudDisplay = true
-	      }
-	    }
+	  	pypList (val) {
+	  		if (val) {
+	  			this.shoudDisplay = false
+	  		} else {
+	  			this.shoudDisplay = true
+	  		}
+	  	}
 	  },
 	  computed: {
-	    shouldShowWarning () {
-	      return this.shoudDisplay && (this.pypList === undefined)
-	    },
-	    pypList () {
-	      if (this.pypListRaw) {
-	        return this.pypListRaw.filter((a) => this.clean(a))
-	      }
-	    }
+	  	shouldShowWarning () {
+	  		return this.shoudDisplay && (this.pypList === undefined)
+	  	},
+	  	pypList () {
+	  		if (this.pypListRaw) {
+	  			return this.pypListRaw.filter((a) => this.clean(a))
+	  		}
+	  	}
 	  },
 	  created () {
-	    window.axios.get('http://nusmathsoc.org/php/pyp.php?cmd=moduleList').then((response) => {
+	  	window.axios.get('http://nusmathsoc.org/php/pyp.php?cmd=moduleList').then((response) => {
 	      // console.log(response)
 	      this.moduleArrayRaw = response.data
 	    })
 
-	    Bus.listen('select_mod', (data) => {
-	      this.module = data
+	  	Bus.listen('select_mod', (data) => {
+	  		this.module = data
 	      // console.log('selected: ' + data)
 	    })
 
-	    Bus.listen('search', () => { this.search() })
+	  	Bus.listen('search', () => { this.search() })
 
-	    Bus.listen('remove_error', () => { this.shoudDisplay = false })
+	  	Bus.listen('remove_error', () => { this.shoudDisplay = false })
 	  }
 	}
 </script>
