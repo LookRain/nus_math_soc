@@ -24,7 +24,7 @@
 					<p>Should you find any mistakes or have any feedback about the solutions, please email us at: <a href="mailto:latexify@nusmathsoc.org">latexify@nusmathsoc.org</a></p>
 				</div>
 
-				<input-auto></input-auto>
+				<input-auto :module-array="moduleArrayRaw"></input-auto>
 				<br><br><br><br>
 				test
 
@@ -40,7 +40,18 @@
 
 	export default {
 	  name: 'Pyp',
-	  components: { InputAuto }
+	  data () {
+	    return {
+	      moduleArrayRaw: []
+	    }
+	  },
+	  components: { InputAuto },
+	  created () {
+	    window.axios.get('http://nusmathsoc.org/php/pyp.php?cmd=moduleList').then((response) => {
+	      // console.log(response)
+	      this.moduleArrayRaw = response.data
+	    })
+	  }
 	}
 </script>
 <style lang="css" scoped>

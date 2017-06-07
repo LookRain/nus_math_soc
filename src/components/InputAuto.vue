@@ -18,9 +18,9 @@
 
 	export default {
 	  name: 'InputAuto',
+	  props: ['moduleArray'],
 	  data () {
 	    return {
-	      moduleArray: [],
 	      highlightIndex: -1,
 	      searchInput: '',
 	      searchResult: [],
@@ -67,20 +67,18 @@
 	    cleanseInput (str) {
 	    	let result = ''
 	    	if (str) {
-	    		result = str.toUpperCase()
+	    		result = str.toUpperCase().replace(/[^0-9a-z]/gi, '')
 	    	}
 	    	return result
 	    }
 	  },
 
 	  created () {
-	  	window.axios.get('http://nusmathsoc.org/php/pyp.php?cmd=moduleList').then((response) => {
-	      // console.log(response)
-	    this.moduleArray = response.data
-	  })
+	
 	  },
 	  watch: {
 	  	searchInput (val) {
+	  		val = this.cleanseInput(val)
 	  		if (val) {
 	  			this.searchInput = val.trim()
 	  		}
@@ -139,7 +137,7 @@
 	}
 	.slide-fade-enter, .slide-fade-leave-to
 	/* .slide-fade-leave-active for <2.1.8 */ {
-		transform: translateX(10px);
+		transform: translateY(30px);
 		opacity: 0;
 	}
 </style>
