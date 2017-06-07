@@ -1,27 +1,30 @@
 <template>
-	<div class="field">
-		<label class="label">Module Code</label>
-		<p class="control">
-			<input class="input" type="text" placeholder="Text input" @focus="getFocus" v-model="searchInput" @blur="loseFocus" @click="getFocus" @keyup="getFocus">
+	<div class="field has-addons">
+		<p class="control is-expanded">
+			<input class="input" type="text" placeholder="Text input" @focus="getFocus" v-model="searchInput" @blur="loseFocus" @click="getFocus" @keyup="getFocus" @keydown.enter="selectSendFromKey">
 			<transition name="slide-fade">
 				<ul class="drop-ul" v-show="shouldShow">
 					<li v-for="(item, index) in searchResult" @mousedown="select(index)" class="drop-li" @mouseover="setHighlight(index)" :class="{ 'highlighted': highlightIndex===index }">{{ item }}</li>
-					
 				</ul>
 			</transition>
+		</p>
+		<p class="control">
+			<a class="button is-info" @click="sendSearch">
+				Search
+			</a>
 		</p>
 		
 	</div>
 </template>
 <script>
-	// import Bus from '@/event-bus'
+	import Bus from '@/event-bus'
 
 	export default {
 	  name: 'InputAuto',
 	  props: ['moduleArray'],
 	  data () {
 	    return {
-	      highlightIndex: -1,
+	      highlightIndex: '',
 	      searchInput: '',
 	      searchResult: [],
 	      isOpen: false,
@@ -48,6 +51,7 @@
 	    },
 	    getFocus () {
 	      // console.log('focused')
+	      Bus.fire('remove_error')
 	      if (this.searchResult.length === 1) {
 	      	if (this.searchResult[0] === this.searchInput) {
 	      		return
@@ -59,10 +63,10 @@
 	      // console.log('lost')
 	      this.isOpen = false
 	    },
-	    select (id) {
+	    select (id) { // DOES NOT SEND SEARCH EVENT
 	    	this.selectedMod = this.searchResult[id]
 	    	this.searchInput = this.selectedMod
-	    	console.log(this.selectedMod)
+	    	Bus.fire('select_mod', this.selectedMod)
 	    },
 	    cleanseInput (str) {
 	    	let result = ''
@@ -70,6 +74,23 @@
 	    		result = str.toUpperCase().replace(/[^0-9a-z]/gi, '')
 	    	}
 	    	return result
+	    },
+	    selectSendFromKey () {
+	    	if (this.searchResult.length > 0) {
+	    		this.selectedMod = this.searchResult[0]
+	    		// console.log(this.selectedMod)
+	    		this.searchInput = this.selectedMod
+	    		Bus.fire('select_mod', this.selectedMod)
+	    		this.sendSearch()
+	    	} else {
+	    		this.sendSearch()
+	    	}
+	    	this.isOpen = false
+	    },
+	    sendSearch () {
+	    	this.selectedMod = this.searchInput
+	    	Bus.fire('select_mod', this.selectedMod)
+	    	Bus.fire('search')
 	    }
 	  },
 
