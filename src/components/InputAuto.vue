@@ -95,7 +95,7 @@
 	  },
 
 	  created () {
-	
+
 	  },
 	  watch: {
 	  	searchInput (val) {

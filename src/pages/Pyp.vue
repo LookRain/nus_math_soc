@@ -24,7 +24,7 @@
 					<p>Should you find any mistakes or have any feedback about the solutions, please email us at: <a href="mailto:latexify@nusmathsoc.org">latexify@nusmathsoc.org</a></p>
 					<br>
 					<h4 class="title">Search Module Code: </h4>
-					<input-auto :module-array="moduleArrayRaw"></input-auto>
+					<input-auto :module-array="modArray"></input-auto>
 					<p class="help is-danger" v-show="shouldShowWarning">No search result.</p>
 					<br>
 					<ul>
@@ -41,21 +41,21 @@
 	import Bus from '@/event-bus'
 
 	export default {
-		name: 'Pyp',
-		data () {
-			return {
-				searchActive: false,
-				moduleArrayRaw: [],
-				module: '',
-				pypListRaw: [],
-				shoudDisplay: false,
-				pypDir: 'http://nusmathsoc.org/PYP/'
-			}
-		},
-		components: { InputAuto },
-		methods: {
-			search () {
-				this.pypListRaw = []
+	  name: 'Pyp',
+	  data () {
+	    return {
+	      searchActive: false,
+	      moduleArrayRaw: [],
+	      module: '',
+	      pypListRaw: [],
+	      shoudDisplay: false,
+	      pypDir: 'http://nusmathsoc.org/PYP/'
+	    }
+	  },
+	  components: { InputAuto },
+	  methods: {
+	    search () {
+	      this.pypListRaw = []
 	      // console.log(this.module)
 	      this.searchActive = true
 	      window.axios.get('http://nusmathsoc.org/php/getpyplist.php?module=' + this.module).then((response) => {
@@ -88,18 +88,22 @@
 	  		if (this.pypListRaw) {
 	  			return this.pypListRaw.filter((a) => this.clean(a))
 	  		}
+	  	},
+	  	modArray () {
+	  		let temp = this.moduleArrayRaw
+	  		return temp.filter((code) => { return !code.includes('.') })
 	  	}
 	  },
 	  created () {
 	  	window.axios.get('http://nusmathsoc.org/php/pyp.php?cmd=moduleList').then((response) => {
 	      // console.log(response)
-	      this.moduleArrayRaw = response.data
-	    })
+	    this.moduleArrayRaw = response.data
+	  })
 
 	  	Bus.listen('select_mod', (data) => {
 	  		this.module = data
 	      // console.log('selected: ' + data)
-	    })
+	  })
 
 	  	Bus.listen('search', () => { this.search() })
 
