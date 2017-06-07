@@ -3,10 +3,12 @@
 		<label class="label">Module Code</label>
 		<p class="control">
 			<input class="input" type="text" placeholder="Text input" @focus="getFocus" v-model="searchInput" @blur="loseFocus" @click="getFocus" @keyup="getFocus">
-			<ul class="drop-ul" v-show="shouldShow">
-				<li v-for="(item, index) in searchResult" @mousedown="select(index)" class="drop-li" @mouseover="setHighlight(index)" :class="{ 'highlighted': highlightIndex===index }">{{ item }}</li>
-				
-			</ul>
+			<transition name="slide-fade">
+				<ul class="drop-ul" v-show="shouldShow">
+					<li v-for="(item, index) in searchResult" @mousedown="select(index)" class="drop-li" @mouseover="setHighlight(index)" :class="{ 'highlighted': highlightIndex===index }">{{ item }}</li>
+					
+				</ul>
+			</transition>
 		</p>
 		
 	</div>
@@ -61,6 +63,13 @@
 	    	this.selectedMod = this.searchResult[id]
 	    	this.searchInput = this.selectedMod
 	    	console.log(this.selectedMod)
+	    },
+	    cleanseInput (str) {
+	    	let result = ''
+	    	if (str) {
+	    		result = str.toUpperCase()
+	    	}
+	    	return result
 	    }
 	  },
 
@@ -121,5 +130,16 @@
 
 	.highlighted {
 		background: hsl(171, 100%, 37%);
+	}
+	.slide-fade-enter-active {
+		transition: all .3s ease;
+	}
+	.slide-fade-leave-active {
+		transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+	}
+	.slide-fade-enter, .slide-fade-leave-to
+	/* .slide-fade-leave-active for <2.1.8 */ {
+		transform: translateX(10px);
+		opacity: 0;
 	}
 </style>
