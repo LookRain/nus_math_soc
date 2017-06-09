@@ -1,6 +1,7 @@
 <template>
   <div>
-    <my-nav></my-nav>
+    <!-- the id nav is for scroll-to-top function -->
+    <my-nav id="nav"></my-nav>
     <transition name="slide-fade">
       <router-view></router-view>
     </transition>
