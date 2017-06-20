@@ -16,7 +16,7 @@
       <div class="timeline-content" :id="point.id">
 
         <h2 v-text="point.name"></h2>
-        <p v-if="point.date"><b>Date: </b>{{ point.date }}</p>
+        <p v-if="point.date"><b>Date: </b>{{ point.date }} <span v-if="point.endDate"> - {{ point.endDate }}</span></p>
         <p v-if="point.startTime"><b>Time: </b>{{ point.startTime }} ~ {{ point.endTime }}</p>
         <p v-if="point.venue"><b>Venue: </b>{{ point.venue }}<span v-if="point.venueDetails">, {{ point.venueDetails }}</span></p>
 

@@ -19,6 +19,7 @@ let EventsList = [
     img: 'workshop',
     id: 'QFtalk2017',
     date: '25 Mar 2017',
+    endDate: '8 April 2017',
     poster: 'Quant Challenge 2017'
 
   },
