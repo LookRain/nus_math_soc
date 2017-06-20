@@ -1,16 +1,16 @@
 <template>
   <section class="timeline-container timeline">
-  <div class="column">
-        <transition name="fade">
+    <div class="column">
+      <transition name="fade">
 
         <image-modal :imageName="activeImage"></image-modal>
 
-        </transition>
-      </div>
+      </transition>
+    </div>
     <div v-for="point in points" class="timeline-block">
       <div class="timeline-img" :class="['timeline-img',point.pointColor===undefined?'red':point.pointColor]">
         <img :src="getIconUrl(point.img)" alt="">
-  
+        
       </div>
 
       <div class="timeline-content" :id="point.id">
@@ -41,48 +41,50 @@
           v-html="point.linkText!=undefined?point.linkText:'Read More'"
           ></a>
         </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </template>
 
 <style src="./styles/eventTimeline.css" scoped>
 </style>
 
 <script>
-import ImageModal from './ImageModal'
-import Bus from '../event-bus'
+  import ImageModal from './ImageModal'
+  import Bus from '../event-bus'
 
-export default{
-  props: {
-    points: {
-      required: true
-    }
-  },
-  data () {
-    return {
-      activeImage: ''
-    }
-  },
-  components: { ImageModal },
-  methods: {
-    getIconUrl (imgName) {
-      var defaultImage = require.context('../assets/eventIcons/', false, /\.png$/)
-      if (imgName) {
-        var images = require.context('../assets/eventIcons/', false, /\.png$/)
-        return images('./' + imgName + '.png')
+  export default{
+    props: {
+      points: {
+        required: true
       }
-      return defaultImage('./' + 'math' + '.png')
     },
+    data () {
+      return {
+        activeImage: ''
+      }
+    },
+    components: { ImageModal },
+    methods: {
+      getIconUrl (imgName) {
+        var defaultImage = require.context('../assets/eventIcons/', false, /\.png$/)
+        if (imgName) {
+          var images = require.context('../assets/eventIcons/', false, /\.png$/)
+          return images('./' + imgName + '.png')
+        }
+        return defaultImage('./' + 'math' + '.png')
+      },
 
-    getPosterUrl (imgName) {
-      var images = require.context('../assets/images/posters/', false, /\.jpg$/)
-      return images('./' + imgName + '.jpg')
-    },
-    setActiveImage (imgName) {
-      this.activeImage = imgName
-      Bus.fire('invoke')
+    // The image needs to be in .jpg format!!!
+    // If it is not, convert to jpg.
+      getPosterUrl (imgName) {
+        var images = require.context('../assets/images/posters/', false, /\.jpg$/)
+        return images('./' + imgName + '.jpg')
+      },
+      setActiveImage (imgName) {
+        this.activeImage = imgName
+        Bus.fire('invoke')
+      }
     }
-  }
 }
 </script>

@@ -6,11 +6,23 @@
         4. Start a new paragraph in description like this:
             "previous para"
             +
-            "Start a new paragraph like this", // Can include any kind of html tags
+            "Start a new paragraph like this",
+// Can include any kind of html tags
 
 */
 
 let EventsList = [
+  {
+    name: 'NUS Quant Challenge 2017',
+    shortName: 'QF Challenge 17',
+    pointColor: 'yellow',
+    img: 'workshop',
+    id: 'QFtalk2017',
+    date: '25 Mar 2017',
+    poster: 'Quant Challenge 2017'
+
+  },
+
   {
     name: "Singapore Rubik's Cube Competitions 2017 NUS Cateogry",
     shortName: 'NUS Cube',
@@ -29,6 +41,18 @@ let EventsList = [
     registrationLink: 'https://nus.edu/2jAVHKo',
     registrationDetails: 'Please register by 9th Feb',
     poster: 'cube2017' // relative path
+  },
+  {
+    name: 'QF Industrial Talk 2016',
+    shortName: 'QF Talk 16',
+    pointColor: 'green',
+    img: 'talk',
+    id: 'QFtalk2017',
+    venue: 'LT31',
+    date: '3 Nov 2016',
+    startTime: '1900',
+    endTime: '2100',
+    poster: 'QF Industrial Talk'
   },
   {
     name: 'NUS Sudoku Competition 2016',
@@ -52,6 +76,18 @@ let EventsList = [
     portrait: true // whether the poster is portrait or not
   },
   {
+    name: 'QF Senior-Junior Sharing Session 2016',
+    shortName: 'QF Sharing 16',
+    pointColor: 'green',
+    img: 'talk',
+    id: 'QFsharing2017',
+    venue: 'LT31',
+    date: '13 Sep 2016',
+    startTime: '1900',
+    endTime: '2100',
+    poster: 'QF senior-junior sharing session 2016'
+  },
+  {
     name: "Singapore Rubik's Cube Competitions 2016",
     shortName: `SG Cube`,
     img: 'rubik',
@@ -62,9 +98,9 @@ let EventsList = [
     date: '20 Feb 2016',
     timelineDate: 'Feb',
     description: `The Singapore Rubik’s Cube Competition is an annual competition held by the NUS Mathematics Society. 
-						It is the sixth year running in the history of the competition that there would be a total of three categories,
-						namely the NUS, School Category and the Open Category. In addition, 
-						the Open Category of the Competition would be a WCA-sanctioned (World Cube Association) event.`,
+    It is the sixth year running in the history of the competition that there would be a total of three categories,
+    namely the NUS, School Category and the Open Category. In addition, 
+    the Open Category of the Competition would be a WCA-sanctioned (World Cube Association) event.`,
     website: 'cube2016'
   },
   {
@@ -101,10 +137,10 @@ let EventsList = [
     endTime: '2100',
     poster: 'latex2016',
     description: ' <p><b>LaTeX</b> is a document preparation system widely used to typeset high quality documents,\n' +
-                        'especially in mathematics and sciences.</p>' +
-                        '<p><u><b>No prior experience</b></u> in LaTeX is required for this workshop. Participants must bring \n' +
-                        'their own laptops, with the required software installed (instructions will be give upon registration).</p>' +
-                        '<p>Enquiries are welcome at <a href="mailto:latexify@gmail.com">latexify@gmail.com</a></p>'
+    'especially in mathematics and sciences.</p>' +
+    '<p><u><b>No prior experience</b></u> in LaTeX is required for this workshop. Participants must bring \n' +
+    'their own laptops, with the required software installed (instructions will be give upon registration).</p>' +
+    '<p>Enquiries are welcome at <a href="mailto:latexify@gmail.com">latexify@gmail.com</a></p>'
 
   },
   {
@@ -121,9 +157,9 @@ let EventsList = [
     endTime: '2100',
     poster: 'sharing2016',
     description: ` Our speakers will be sharing their experience and insights on several activities, 
-						from the perspective of Pure Math, Applied Math and QF majors. ' +
-						'By discussing the details of these activities, we aim to assist students in these majors and related majors
-						in their academic and early career decisions.`
+    from the perspective of Pure Math, Applied Math and QF majors. ' +
+    'By discussing the details of these activities, we aim to assist students in these majors and related majors
+    in their academic and early career decisions.`
 
   }
 ]
