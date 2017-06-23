@@ -12,17 +12,17 @@
 */
 
 let EventsList = [
-  {
-    name: 'NUS Quant Challenge 2017',
-    shortName: 'QF Challenge 17',
-    pointColor: 'yellow',
-    img: 'workshop',
-    id: 'QFtalk2017',
-    date: '25 Mar 2017',
-    endDate: '8 April 2017',
-    poster: 'Quant Challenge 2017'
+  // {
+  //   name: 'NUS Quant Challenge 2017',
+  //   shortName: 'QF Challenge 17',
+  //   pointColor: 'yellow',
+  //   img: 'workshop',
+  //   id: 'QFtalk2017',
+  //   date: '25 Mar 2017',
+  //   endDate: '8 April 2017',
+  //   poster: 'Quant Challenge 2017'
 
-  },
+  // },
 
   {
     name: "Singapore Rubik's Cube Competitions 2017 NUS Cateogry",
