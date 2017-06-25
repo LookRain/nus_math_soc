@@ -12,17 +12,43 @@
 */
 
 let EventsList = [
-  // {
-  //   name: 'NUS Quant Challenge 2017',
-  //   shortName: 'QF Challenge 17',
-  //   pointColor: 'yellow',
-  //   img: 'workshop',
-  //   id: 'QFtalk2017',
-  //   date: '25 Mar 2017',
-  //   endDate: '8 April 2017',
-  //   poster: 'Quant Challenge 2017'
-
-  // },
+  {
+    name: "Singapore Rubik's Cube Competitions 2017 Open Category",
+    shortName: `SG Cube`,
+    img: 'rubik',
+    startTime: '0815',
+    endTime: '1900',
+    pointColor: 'red',
+    id: 'cube2017open',
+    venue: 'LT27 and LT31',
+    venueDetails: 'NUS Faculty of Science',
+    date: '18 Feb 2017',
+    endDate: '19 Feb 2017',
+    description: `<p>In Singapore Open 2017, we had 191 participants from 16 countries and saw 34 national records and 1 Asian record broken.</p> <p>
+    We have updated all results on the Cubecomps website at <a href="http://cubecomps.com/live.php?cid=2034">http://cubecomps.com/live.php?cid=2034</a>.</p> 
+    <p>Many photos have been uploaded to our <a href="https://www.facebook.com/pg/SGCubeComps/photos/?tab=album&album_id=1321806427880045">Facebook album</a> as well.</p> Congratulations to our prize winners and we hope to see you again next year!
+    <p><b>Video</b>: <a href="https://www.youtube.com/watch?v=NdostXBHzQI&sns=fb">https://www.youtube.com/watch?v=NdostXBHzQI&sns=fb</a></p>
+    `,
+    website: 'http://cube2017.nusmathsoc.org/open.html#home',
+    poster: 'cube2017open'
+  },
+  {
+    name: "Singapore Rubik's Cube Competitions 2017 School Category",
+    shortName: `NUS Cube`,
+    img: 'rubik',
+    pointColor: 'yellow',
+    id: 'cube2017school',
+    venue: 'LT27 and LT31',
+    venueDetails: 'NUS Faculty of Science',
+    date: '11 Feb 2017',
+    startTime: '0900',
+    endTime: '1730',
+    description: `The results of Singapore Rubik's Cube 2017 School Category can be found at <a href="http://cube2017.nusmathsoc.org/school/results.html#3i">here</a>. 
+    <p>Thanks for coming and see you next year!</p>
+    <p>Many photos have been uploaded to our <a href="https://www.facebook.com/pg/SGCubeComps/photos/?tab=album&album_id=1314085901985431">Facebook album</a> as well.</p>
+    `,
+    poster: 'cube2017school'
+  },
   {
     name: 'Enrichment Talk 2017',
     shortname: 'Talk 2015',
@@ -30,7 +56,6 @@ let EventsList = [
     pointColor: 'yellow',
     img: 'talk',
     date: '22 Mar 2017',
-    timelineDate: '29 Oct',
     startTime: '1830',
     endTime: '2030',
     poster: 'enrichment-talk-2017',
@@ -42,7 +67,7 @@ let EventsList = [
     shortName: 'QF Talk 16',
     pointColor: 'green',
     img: 'talk',
-    id: 'QFtalk2017',
+    id: 'QFtalk2016',
     venue: 'LT31',
     date: '3 Nov 2016',
     startTime: '1900',
