@@ -12,6 +12,18 @@
 */
 
 let EventsList = [
+    {
+    name: 'Enrichment Talk 2017',
+    shortname: 'Talk 2015',
+    venue: 'LT28',
+    pointColor: 'yellow',
+    img: 'talk',
+    date: '22 Mar 2017',
+    startTime: '1830',
+    endTime: '2030',
+    poster: 'enrichment-talk-2017',
+    description: `This year, we had Associate Professor Han Fei, giving a talk on Application of Topology/Geometry in Science and Technology. The talk was very thought-intriguing and interesting. Students didn't hesitate to raise their questions at the end of the talk.`
+  },
   {
     name: "Singapore Rubik's Cube Competitions 2017 Open Category",
     shortName: `SG Cube`,
@@ -49,19 +61,6 @@ let EventsList = [
     `,
     poster: 'cube2017school'
   },
-  {
-    name: 'Enrichment Talk 2017',
-    shortname: 'Talk 2015',
-    venue: 'LT28',
-    pointColor: 'yellow',
-    img: 'talk',
-    date: '22 Mar 2017',
-    startTime: '1830',
-    endTime: '2030',
-    poster: 'enrichment-talk-2017',
-    description: `This year, we had Associate Professor Han Fei, giving a talk on Application of Topology/Geometry in Science and Technology. The talk was very thought-intriguing and interesting. Students didn't hesitate to raise their questions at the end of the talk.`
-  },
-
   {
     name: 'QF Industrial Talk 2016',
     shortName: 'QF Talk 16',
