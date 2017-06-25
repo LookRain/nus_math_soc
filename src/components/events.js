@@ -23,26 +23,20 @@ let EventsList = [
   //   poster: 'Quant Challenge 2017'
 
   // },
-
   {
-    name: "Singapore Rubik's Cube Competitions 2017 NUS Cateogry",
-    shortName: 'NUS Cube',
-
-    pointColor: 'red',
-    id: 'cube2017nus',
-    venue: 'LT31',
-    venueDetails: 'NUS Faculty of Science S16 Level 3',
-    date: '10 Feb 2017',
-    timelineDate: '10 Feb',
-    startTime: '1900',
-    endTime: '2200',
-    website: 'AY1617/cube/nus.html',
-    description: '<p>This competition is open for current NUS undergraduate and graduate students only.</p>' +
-                        '<p>Events include 2x2, 3x3 and 4x4 cubes.</p>', // Can include any kind of html tags
-    registrationLink: 'https://nus.edu/2jAVHKo',
-    registrationDetails: 'Please register by 9th Feb',
-    poster: 'cube2017' // relative path
+    name: 'Enrichment Talk 2017',
+    shortname: 'Talk 2015',
+    venue: 'LT28',
+    pointColor: 'yellow',
+    img: 'talk',
+    date: '22 Mar 2017',
+    timelineDate: '29 Oct',
+    startTime: '1830',
+    endTime: '2030',
+    poster: 'enrichment-talk-2017',
+    description: `This year, we had Associate Professor Han Fei, giving a talk on Application of Topology/Geometry in Science and Technology. The talk was very thought-intriguing and interesting. Students didn't hesitate to raise their questions at the end of the talk.`
   },
+
   {
     name: 'QF Industrial Talk 2016',
     shortName: 'QF Talk 16',
