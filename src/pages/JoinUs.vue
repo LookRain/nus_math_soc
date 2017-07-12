@@ -91,7 +91,7 @@
 	  data () {
 	    return {
 	      year: 'AY17/18',
-	      isRecruiting: true,
+	      isRecruiting: false,
 	    	formLink: 'https://docs.google.com/document/d/17mK-bUIoZctq4dFMhWfwSKMUyH7zeTC3QjwAdxJmKig/edit?usp=sharing', // the link of the application form (usually a google doc link)
 	    	availablePositions: ['Project Director', 'Assistant Project Director', 'Logistics Director', 'Publicity Director', 'Public Relations Officer', 'Marketing Director', 'Ordinary Member']
 	    }
