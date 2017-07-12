@@ -12,9 +12,23 @@
 */
 
 let EventsList = [
-    {
+  {
+    name: 'Student Staff Game 2017',
+    shortName: `Game 2017`,
+    id: `Game_2017`,
+    venue: 'LT28',
+    pointColor: 'red',
+    img: 'talk',
+    date: '3 Feb 2017',
+    startTime: '1600',
+    endTime: '1900',
+    poster: 'game2017',
+    description: `Student staff game is aimed to build and strengthen the bond between professors and students. We have enjoyed and achieved great results this year. Professors gave feedback after the game and we all look forward to next year's student staff games.`
+  },
+  {
     name: 'Enrichment Talk 2017',
-    shortname: 'Talk 2015',
+    shortName: `Talk 2017`,
+    id: `Talk_2017`,
     venue: 'LT28',
     pointColor: 'yellow',
     img: 'talk',
