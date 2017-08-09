@@ -98,7 +98,7 @@
 	      'Assistant Project Director',
 	      // 'Logistics Director',
 	      'Publicity Director',
-	      'Public Relations Officer',
+	      // 'Public Relations Officer',
 	      // 'Marketing Director',
 	      'Ordinary Member'
 	    ]
