@@ -30,7 +30,7 @@
 								Don’t hesitate anymore! Join NUS Mathematics Society and make your first correct move in your university life.
 							</p>							
 							<p>
-								The deadline for submitting the application form is 1159pm, 26th August 2016. However, the interview will start from 15th August 2016. Try to submit your application early!
+								The deadline for submitting the application form is 1159pm, 27 August 2017. However, interviews will start from as early as 14 August 2017. Do submit your application early so that we can meet you and know you better early!
 							</p>							
 							<p>
 								Download the application form, fill up and send to <a href="mailto:admin@nusmathsoc.org">admin@nusmathsoc.org</a>!
@@ -49,7 +49,7 @@
 								<div class="notification" v-if="availablePositions.length === 0">								
 									Sorry we do not have any more available positions...
 								</div>
-								<li v-else v-for="position in availablePositions">{{ position }}</li>
+								<li v-else v-for="position in availablePositions" :key="position">{{ position }}</li>
 							</ul>
 						</div>	
 					</div>				
@@ -91,9 +91,17 @@
 	  data () {
 	    return {
 	      year: 'AY17/18',
-	      isRecruiting: false,
-	    	formLink: 'https://docs.google.com/document/d/17mK-bUIoZctq4dFMhWfwSKMUyH7zeTC3QjwAdxJmKig/edit?usp=sharing', // the link of the application form (usually a google doc link)
-	    	availablePositions: ['Project Director', 'Assistant Project Director', 'Logistics Director', 'Publicity Director', 'Public Relations Officer', 'Marketing Director', 'Ordinary Member']
+	      isRecruiting: true,
+	    	formLink: 'http://nusmathsoc.org/file/application/NUS_Mathematics_Society_33rd_Management_Committee_Application_Form.docx', // the link of the application form (usually a google doc link)
+	    	availablePositions: [
+	      'Project Director',
+	      'Assistant Project Director',
+	      // 'Logistics Director',
+	      'Publicity Director',
+	      'Public Relations Officer',
+	      // 'Marketing Director',
+	      'Ordinary Member'
+	    ]
 	    }
 	  },
 	  methods: {
