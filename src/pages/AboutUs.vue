@@ -17,9 +17,21 @@
 
   <section class="section">
    <div class="container">
-     <div class="columns">
-       <div class="column is-3">
-         <p v-html="description"></p>
+    <div class="columns">
+      <div class="column is-3">
+         <p>
+          <p>National University of Singapore (NUS) Mathematics Society was founded back in 1985. 
+             In the past few decades, the society has made a remarkable leap in promoting a more gracious mathematical environment in NUS. 
+             Aiming to make the students to learn beyond classroom texts, as well as to enrich students' non-academic life.
+          </p>
+          <br>
+
+        <p>Click <a target="_blank" :href="pptLink">here</a> if you want to find out more about us!</p><br>
+        <small>* The NUS Mathematics Society is registered with the <a target="_blank" href="https://www.ros.mha.gov.sg">Registry of Societies of Singapore</a>. 
+        It is formed by students of NUS and is a self-governing body. NUS Mathematics Society is not part of the legal entity of NUS. It does not represent 
+        NUS and cannot act or make any representation on its behalf. Any views or activities of NUS Mathematics Society are solely those of the society and its members. 
+        They do not necessarily represent the position of NUS. The activities and views of NUS Mathematics Society are the sole responsibilities of the society and of its members.</small>
+         </p>
        </div> 
 
        <hr>
@@ -35,7 +47,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="person in exco">
+            <tr v-for="person in exco" :key="person.position">
               <td>{{ person.position }}</td>
               <td>{{ person.name }}</td>
             </tr>
@@ -58,9 +70,7 @@
     data () {
       return {
         groupPhotoName: 'exco_AY20162017',
-        description: "<p>National University of Singapore (NUS) Mathematics Society was founded back in 1985. In the past few decades, the society has made a remarkable leap in promoting a more gracious mathematical environment in NUS. Aiming to make the students to learn beyond classroom texts, as well as to enrich students' non-academic life.</p><br>" +
-        '<p>Click <a target="_blank" href="file/about_us/Math_Society_2017.pptx">here</a> if you want to find out more about us!</p><br>' +
-        '<small>* The NUS Mathematics Society is registered with the <a target="_blank" href="https://www.ros.mha.gov.sg">Registry of Societies of Singapore</a>. It is formed by students of NUS and is a self-governing body. NUS Mathematics Society is not part of the legal entity of NUS. It does not represent NUS and cannot act or make any representation on its behalf. Any views or activities of NUS Mathematics Society are solely those of the society and its members. They do not necessarily represent the position of NUS. The activities and views of NUS Mathematics Society are the sole responsibilities of the society and of its members.</small>',
+        pptLink: 'http://nusmathsoc.org/file/about_us/Math_Society_2017.pdf',
         exco: [
         {position: 'President', name: 'Song Jiaming'},
         {position: 'Vice-President (Internal)', name: 'Bi Mingyan'},
