@@ -30,12 +30,18 @@
 								Don’t hesitate anymore! Join NUS Mathematics Society and make your first correct move in your university life.
 							</p>							
 							<p>
-								The deadline for submitting the application form is 1159pm, 27 August 2017. However, interviews will start from as early as 14 August 2017. Do submit your application early so that we can meet you and know you better early!
-							</p>							
+								The deadline for submitting the application form is <b>1159pm, 27 August 2017</b>. However, interviews will start from as early as <b>14 August 2017</b>. Do submit your application early so that we can meet you and know you better early!
+							</p>	
 							<p>
-								Download the application form, fill up and send to <a href="mailto:admin@nusmathsoc.org">admin@nusmathsoc.org</a>!
-							</p>							
+								If you want to apply for <b>member</b> only, please fill up the survey.
+</p>						
+							<p>
+								If you want to apply for Management Committee position, please download the application form, fill up and send to <a href="mailto:admin@nusmathsoc.org">admin@nusmathsoc.org</a>!
+							</p>				
+
 							<small v-if="!isRecruiting">Sorry, the application is closed for the moment.</small>
+
+							<a @click.prevent="openSurvey" class="button is-primary" :disabled="!isRecruiting" target="_blank">Fill Survey</a>
 							<a @click.prevent="downloadForm" class="button is-primary" :disabled="!isRecruiting" target="_blank">Download Form</a>
 						</div>
 					</div>
@@ -93,15 +99,16 @@
 	      year: 'AY17/18',
 	      isRecruiting: true,
 	    	formLink: 'http://nusmathsoc.org/file/application/NUS_Mathematics_Society_33rd_Management_Committee_Application_Form.docx', // the link of the application form (usually a google doc link)
-	    	availablePositions: [
-	      'Project Director',
-	      'Assistant Project Director',
+	    	surveyLink: 'https://mysurvey.nus.edu.sg/EFM/se/54CCD14B3F552625',
+	      availablePositions: [
+	        'Project Director',
+	        'Assistant Project Director',
 	      // 'Logistics Director',
-	      'Publicity Director',
+	        'Publicity Director',
 	      // 'Public Relations Officer',
 	      // 'Marketing Director',
-	      'Ordinary Member'
-	    ]
+	        'Ordinary Member'
+	      ]
 	    }
 	  },
 	  methods: {
@@ -109,7 +116,12 @@
 	  		if (this.isRecruiting) {
 	  			window.open(this.formLink, '_blank').focus()
 	  		}
-	  	}
+	  	},
+	    openSurvey () {
+	      if (this.isRecruiting) {
+	  			window.open(this.surveyLink, '_blank').focus()
+	  		}
+	    }
 	  }
 	}
 </script>
