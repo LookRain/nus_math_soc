@@ -1,6 +1,6 @@
 # NUS Math Society Website
 
-> Built with Vue.js and Vue Router.
+Built with Vue.js and Vue Router.
 
 ## Setup
 1. Install Node.js, ensure npm is installed as well
