@@ -1,0 +1,10 @@
+Instructions on updating PYP:
+
+1. Please strictly adhere to the following naming convention:
+e.g.
+MA1101R_AY1314_Sem1.pdf
+(Module Code)_(Year)_(Semester).pdf
+
+2. Please put the .pdf files in its respective folder.
+e.g.
+MA1101R_AY1314_Sem1.pdf should be put under folder PYP/MA1101R
